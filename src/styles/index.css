@@ -1,0 +1,10 @@
+body {
+    background-color: #242424;
+}
+
+#root {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+}
