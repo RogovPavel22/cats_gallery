@@ -14,14 +14,30 @@ type GalleryProps = {
 export const Gallery: React.FC<GalleryProps> = ({ photos }) => {
   const [indexActivePhoto, setindexActivePhoto] = useState(0);
   const activePhoto = photos[indexActivePhoto];
-  const nextPhoto = photos[indexActivePhoto + 1]
-  const prevPhoto = photos[indexActivePhoto - 1]
+  const nextPhoto = photos[indexActivePhoto + 1];
+  const prevPhoto = photos[indexActivePhoto - 1];
+
+  const prevClick = () => {
+    setindexActivePhoto((prevValue) => prevValue - 1);
+  };
+  const nextClick = () => {
+    setindexActivePhoto((prevValue) => prevValue + 1);
+  };
 
   return (
     <div className={style.gallary}>
       <div className={style.gallary_container}>
-        <MainPhoto activePhoto={activePhoto} nextPhoto={nextPhoto} prevPhoto={prevPhoto} />
-        <Navigation />
+        <MainPhoto
+          activePhoto={activePhoto}
+          nextPhoto={nextPhoto}
+          prevPhoto={prevPhoto}
+        />
+        <Navigation
+          disabledPrev={!prevPhoto}
+          disabledNext={!nextPhoto}
+          onPrevClick={prevClick}
+          onNextClick={nextClick}
+        />
       </div>
       <PreviewPhoto />
     </div>
