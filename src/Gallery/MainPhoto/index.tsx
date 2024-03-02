@@ -1,22 +1,23 @@
-import { Photo } from "../types";
+import { Photo, ClassProps } from "../types";
 
 import clsx from "clsx";
 
 import style from "./index.module.scss";
 
-type MAinPhotoProps = {
+interface MAinPhotoProps extends ClassProps {
   activePhoto: Photo;
-  nextPhoto: Photo;
-  prevPhoto: Photo;
-};
+  nextPhoto?: Photo;
+  prevPhoto?: Photo;
+}
 
 export const MainPhoto: React.FC<MAinPhotoProps> = ({
   activePhoto,
   nextPhoto,
   prevPhoto,
+  className
 }) => {
   return (
-    <div className={style.mainPhoto}>
+    <div className={clsx(className, style.mainPhoto)}>
       {prevPhoto && (
         <img
           className={clsx(style.mainPhoto_img, style.mainPhoto_img__prev)}

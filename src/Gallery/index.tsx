@@ -28,18 +28,25 @@ export const Gallery: React.FC<GalleryProps> = ({ photos }) => {
     <div className={style.gallary}>
       <div className={style.gallary_container}>
         <MainPhoto
+          className={style.gallaryMainPhoto}
           activePhoto={activePhoto}
           nextPhoto={nextPhoto}
           prevPhoto={prevPhoto}
         />
         <Navigation
+          className={style.gallaryNavigation}
           disabledPrev={!prevPhoto}
           disabledNext={!nextPhoto}
           onPrevClick={prevClick}
           onNextClick={nextClick}
         />
       </div>
-      <PreviewPhoto />
+      <PreviewPhoto
+        className={style.gallaryPreviewPhoto}
+        indexActivePhoto={indexActivePhoto}
+        photos={photos}
+        imgClick={setindexActivePhoto}
+      />
     </div>
   );
 };

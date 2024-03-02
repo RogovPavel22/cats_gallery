@@ -1,22 +1,25 @@
+import { ClassProps } from "../types";
+
 import clsx from "clsx";
 
 import style from "./index.module.scss";
 
-type NavigationProps = {
+interface NavigationProps extends ClassProps {
   disabledPrev: boolean;
   disabledNext: boolean;
   onPrevClick: () => void;
   onNextClick: () => void;
-};
+}
 
 export const Navigation: React.FC<NavigationProps> = ({
   disabledPrev,
   disabledNext,
   onPrevClick,
   onNextClick,
+  className
 }) => {
   return (
-    <div className={style.nav}>
+    <div className={clsx(className, style.nav)}>
       <button
         className={clsx(style.nav_btn, style.nav_btn__prev)}
         onClick={onPrevClick}
